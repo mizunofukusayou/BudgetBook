@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おてがる家計簿</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4caf50">
+    <link rel="apple-touch-icon" href="icons/icon-180.png">
+</head>
+<body>
+    <header>
+        <h1>おてがる家計簿</h1>
+    </header>
+
+    <main>
+        <section class="balance-card">
+            <h2>今月の合計</h2>
+            <p id="total-amount">¥0</p>
+        </section>
+
+        <section class="input-form">
+            <input type="text" id="item-name" placeholder="項目（例：ランチ）">
+            <input type="number" id="item-price" placeholder="金額（円）">
+            <button id="add-btn">追加</button>
+        </section>
+
+        <section class="history">
+            <h3>履歴</h3>
+            <ul id="history-list">
+                </ul>
+        </section>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>
