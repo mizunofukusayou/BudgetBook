@@ -1,13 +1,32 @@
+@charset "UTF-8";
+
+:root {
+    /* 変数の定義（デフォルトはライト用） */
+    --bg: #e2e6e4;
+    --text: #121212;
+    --accent: #4caf50;
+    --box-bg: #f8f9fa;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* ダークモードの時だけ、変数の中身を入れ替える */
+        --bg: #121212;
+        --text: #f8f9fa;
+        --box-bg: #575757;
+    }
+}
+
 body {
     font-family: "Helvetica Neue", Arial, sans-serif;
-    background-color: #f4f7f6;
+    background-color: var(--bg);
     margin: 0;
-    color: #333;
+    color: var(--text);
 }
 
 header {
-    background-color: #4caf50;
-    color: white;
+    background-color: var(--accent);
+    color: var(--text);
     text-align: center;
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -20,7 +39,7 @@ main {
 }
 
 .balance-card {
-    background: white;
+    background: var(--box-bg);
     border-radius: 12px;
     padding: 20px;
     text-align: center;
@@ -31,7 +50,7 @@ main {
 #total-amount {
     font-size: 2rem;
     font-weight: bold;
-    color: #4caf50;
+    color: var(--accent);
     margin: 10px 0 0;
 }
 
@@ -43,15 +62,17 @@ main {
 }
 
 input {
+    background: var(--box-bg);
     padding: 12px;
     border: 1px solid #ddd;
+    @media (prefers-color-scheme: dark){border-color: #929191;}
     border-radius: 8px;
     font-size: 16px; /* iPhoneでズームされないサイズ */
 }
 
 button {
     padding: 12px;
-    background-color: #4caf50;
+    background-color: var(--accent);
     color: white;
     border: none;
     border-radius: 8px;
@@ -61,7 +82,7 @@ button {
 }
 
 .history {
-    background: white;
+    background: var(--box-bg);
     border-radius: 12px;
     padding: 10px;
 }
@@ -75,7 +96,8 @@ li {
     display: flex;
     justify-content: space-between;
     padding: 12px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #999999;
+    @media (prefers-color-scheme: dark){border-bottom: 1px solid #eee;}
 }
 
 li:last-child {
