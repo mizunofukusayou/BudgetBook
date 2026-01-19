@@ -22,6 +22,7 @@ body {
     background-color: var(--bg);
     margin: 0;
     color: var(--text);
+    margin-bottom: 60px;
 }
 
 header {
@@ -110,4 +111,8 @@ footer {
     left: 0;
     width: 100%;
     height: 60px;
+}
+
+#reset-btn {
+    margin-left: 20px;
 }
