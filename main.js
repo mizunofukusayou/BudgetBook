@@ -1,7 +1,36 @@
 // Service Workerの登録
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js')
-        .then(() => console.log('Service Worker Registered'));
+async function registUpdateSW() {
+    if (!('serviceWorker' in navigator)) return;
+    
+    const reg = await navigator.serviceWorker.register('/sw.js');
+    
+    // 1. すでに待機中のSWがある場合（別のタブで更新済みなど）
+    if (reg.waiting) {
+        showUpdateConfirm(reg.waiting);
+    }
+    
+    // 2. 新しいSWがインストールされ始めたら監視
+    reg.addEventListener('updatefound', () => {
+        const newWorker = reg.installing;
+        newWorker.addEventListener('statechange', () => {
+            // インストールが完了して「待機状態」になったタイミングで通知
+            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                showUpdateConfirm(newWorker);
+            }
+        });
+    });
+}
+
+function showUpdateConfirm(worker) {
+    if (confirm('新しいバージョンが利用可能です。更新しますか？')) {
+        // Service Worker側に「待機をやめて起動しろ」とメッセージを送る
+        worker.postMessage({ type: 'SKIP_WAITING' });
+        
+        // 切り替わったらページをリロードする
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+            location.reload();
+        });
+    }
 }
 
 const addBtn = document.getElementById('add-btn');

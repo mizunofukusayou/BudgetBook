@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kakeibo-v1';
+const CACHE_NAME = 'kakeibo-v2';
 const ASSETS = [
     './',
     './index.html',
@@ -21,6 +21,28 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request).then((response) => {
             return response || fetch(event.request);
+        })
+    );
+});
+
+// アクティベート
+self.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
+    }
+});
+
+// 古いバージョンのキャッシュを削除
+self.addEventListener('activate', (event) => {
+    event.waitUntil(
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cacheName) => {
+                    if (CACHE_NAME !== cacheName) {
+                        return caches.delete(cacheName); 
+                    }
+                })
+            );
         })
     );
 });
