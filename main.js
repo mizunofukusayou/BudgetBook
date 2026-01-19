@@ -58,7 +58,7 @@ function updateUI() {
 
 // データの追加
 inputForm.addEventListener('submit', (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const name = itemNameInput.value;
     const price = parseInt(itemPriceInput.value);
 
