@@ -33,7 +33,7 @@ function showUpdateConfirm(worker) {
     }
 }
 
-const addBtn = document.getElementById('add-btn');
+const inputForm = document.querySelector('.input-form');
 const itemNameInput = document.getElementById('item-name');
 const itemPriceInput = document.getElementById('item-price');
 const historyList = document.getElementById('history-list');
@@ -57,7 +57,8 @@ function updateUI() {
 }
 
 // データの追加
-addBtn.addEventListener('click', () => {
+inputForm.addEventListener('submit', (event) => {
+    event.preventDefault()
     const name = itemNameInput.value;
     const price = parseInt(itemPriceInput.value);
 
