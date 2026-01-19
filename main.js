@@ -79,6 +79,7 @@ const resetBtn = document.getElementById('reset-btn');
 resetBtn.addEventListener('click', () => {
     alert('履歴を削除しますか？')
     records = [];
+    localStorage.removeItem('kakeibo_data');
     updateUI();
 })
 
