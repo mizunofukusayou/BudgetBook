@@ -49,7 +49,7 @@ function updateUI() {
     records.forEach((record, index) => {
         const li = document.createElement('li');
         li.innerHTML = `<span>${record.name}</span><span>¥${record.price.toLocaleString()}</span>`;
-        historyList.appendChild(li);
+        historyList.prepend(li);
         total += record.price;
     });
 
