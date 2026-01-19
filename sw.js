@@ -4,7 +4,8 @@ const ASSETS = [
     './index.html',
     './style.css',
     './main.js',
-    './manifest.json'
+    './manifest.json',
+    'icon-120.png'
 ];
 
 // インストール時にファイルをキャッシュ
