@@ -74,5 +74,15 @@ addBtn.addEventListener('click', () => {
     }
 });
 
+const resetBtn = document.getElementById('reset-btn');
+// 履歴削除
+resetBtn.addEventListener('click', () => {
+    if (confirm('履歴を削除しますか？')) {
+        records = [];
+        localStorage.removeItem('kakeibo_data');
+        updateUI();
+    }
+});
+
 // 初期表示
 updateUI();
