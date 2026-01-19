@@ -1,11 +1,11 @@
-const CACHE_NAME = 'kakeibo-v5';
+const CACHE_NAME = 'kakeibo-v6';
 const ASSETS = [
     './',
     './index.html',
     './style.css',
     './main.js',
     './manifest.json',
-    'icon-120.png'
+    './icons/icon-120.png'
 ];
 
 // インストール時にファイルをキャッシュ

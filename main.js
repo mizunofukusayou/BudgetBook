@@ -2,7 +2,7 @@
 async function registUpdateSW() {
     if (!('serviceWorker' in navigator)) return;
     
-    const reg = await navigator.serviceWorker.register('/sw.js');
+    const reg = await navigator.serviceWorker.register('./sw.js');
     
     // 1. すでに待機中のSWがある場合（別のタブで更新済みなど）
     if (reg.waiting) {
@@ -32,6 +32,8 @@ function showUpdateConfirm(worker) {
         });
     }
 }
+
+registUpdateSW();
 
 const inputForm = document.querySelector('.input-form');
 const itemNameInput = document.getElementById('item-name');
