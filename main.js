@@ -33,7 +33,7 @@ function showUpdateConfirm(worker) {
     }
 }
 
-registUpdateSW()
+registUpdateSW();
 
 const inputForm = document.querySelector('.input-form');
 const itemNameInput = document.getElementById('item-name');
