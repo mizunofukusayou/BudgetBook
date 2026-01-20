@@ -50,7 +50,7 @@ function updateUI() {
 
     records.forEach((record, index) => {
         const li = document.createElement('li');
-        li.innerHTML = `<span>${record.name}</span><span>¥${record.price.toLocaleString()}</span>`;
+        li.innerHTML = `<span>${record.date}</span><span>${record.name}</span><span>¥${record.price.toLocaleString()}</span>`;
         historyList.prepend(li);
         total += record.price;
     });
@@ -65,7 +65,17 @@ inputForm.addEventListener('submit', (event) => {
     const price = parseInt(itemPriceInput.value);
 
     if (name && price) {
-        records.push({ name, price });
+        const now = new Date();
+
+        const formatter = new Intl.DateTimeFormat('ja-JP', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+        });
+
+        const date = formatter.format(now);
+        records.push({date, name, price });
+        // records.push({ name, price });
         localStorage.setItem('kakeibo_data', JSON.stringify(records));
         updateUI();
         
