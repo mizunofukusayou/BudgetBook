@@ -51,18 +51,30 @@ let records = JSON.parse(localStorage.getItem('kakeibo_data')) || [];
 
 // 画面表示の更新
 function updateUI() {
-    historyList.innerHTML = '';
+    historyList.innerHTML = ''; 
     let total = 0;
 
-    records.forEach((record, index) => {
+    records.forEach((record) => {
         const li = document.createElement('li');
-        const displayDate = record.date || '';
-        li.innerHTML = `<span>${displayDate}</span><span>${record.name}</span><span>¥${record.price.toLocaleString()}</span>`;
+
+        const dateSpan = document.createElement('span');
+        dateSpan.textContent = record.date || '';
+
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = record.name;
+
+        const priceSpan = document.createElement('span');
+        priceSpan.textContent = `¥${record.price.toLocaleString()}`;
+
+        li.appendChild(dateSpan);
+        li.appendChild(nameSpan);
+        li.appendChild(priceSpan);
+
         historyList.prepend(li);
         total += record.price;
     });
 
-    totalAmountDisplay.innerText = `¥${total.toLocaleString()}`;
+    totalAmountDisplay.textContent = `¥${total.toLocaleString()}`;
 }
 
 // データの追加
