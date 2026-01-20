@@ -74,7 +74,7 @@ inputForm.addEventListener('submit', (event) => {
         });
 
         const date = formatter.format(now);
-        records.push({date, name, price });
+        records.push({date, name, price});
         // records.push({ name, price });
         localStorage.setItem('kakeibo_data', JSON.stringify(records));
         updateUI();
