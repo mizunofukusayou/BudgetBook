@@ -50,7 +50,8 @@ function updateUI() {
 
     records.forEach((record, index) => {
         const li = document.createElement('li');
-        li.innerHTML = `<span>${record.date}</span><span>${record.name}</span><span>¥${record.price.toLocaleString()}</span>`;
+        const displayDate = record.date || '';
+        li.innerHTML = `<span>${displayDate}</span><span>${record.name}</span><span>¥${record.price.toLocaleString()}</span>`;
         historyList.prepend(li);
         total += record.price;
     });
