@@ -1,3 +1,9 @@
+const formatter = new Intl.DateTimeFormat('ja-JP', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+});
+
 // Service Workerの登録
 async function registUpdateSW() {
     if (!('serviceWorker' in navigator)) return;
@@ -50,7 +56,8 @@ function updateUI() {
 
     records.forEach((record, index) => {
         const li = document.createElement('li');
-        li.innerHTML = `<span>${record.name}</span><span>¥${record.price.toLocaleString()}</span>`;
+        const displayDate = record.date || '';
+        li.innerHTML = `<span>${displayDate}</span><span>${record.name}</span><span>¥${record.price.toLocaleString()}</span>`;
         historyList.prepend(li);
         total += record.price;
     });
@@ -65,7 +72,8 @@ inputForm.addEventListener('submit', (event) => {
     const price = parseInt(itemPriceInput.value);
 
     if (name && price) {
-        records.push({ name, price });
+        const date = formatter.format(new Date());
+        records.push({date, name, price});
         localStorage.setItem('kakeibo_data', JSON.stringify(records));
         updateUI();
         
