@@ -68,9 +68,9 @@ inputForm.addEventListener('submit', (event) => {
         const now = new Date();
 
         const formatter = new Intl.DateTimeFormat('ja-JP', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit'
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
         });
 
         const date = formatter.format(now);
