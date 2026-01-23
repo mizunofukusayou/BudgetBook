@@ -31,6 +31,7 @@ header {
     text-align: center;
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
 }
 
 main {
@@ -115,4 +116,11 @@ footer {
 
 #reset-btn {
     margin-left: 20px;
+}
+
+#version {
+    margin-bottom: 0px;
+    position: absolute;
+    bottom: 0px;
+    right: 10px;
 }
