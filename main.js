@@ -39,7 +39,20 @@ function showUpdateConfirm(worker) {
     }
 }
 
+// 動作しているバージョンを表示
+async function showVersion() {
+    if (!('caches' in window)) return;
+    try {
+        const div = document.getElementById('version');
+        const cacheNames = await caches.keys();
+        cacheNames.forEach(cacheName => {div.textContent='version: '+cacheName;})
+    } catch (error) {
+        console.error('Failed to show version from caches:', error);
+    }
+}
+
 registUpdateSW();
+showVersion();
 
 const inputForm = document.querySelector('.input-form');
 const itemNameInput = document.getElementById('item-name');
