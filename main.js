@@ -46,7 +46,9 @@ async function showVersion() {
         const div = document.getElementById('version');
         const cacheNames = await caches.keys();
         cacheNames.forEach(cacheName => {div.textContent='version: '+cacheName;})
-    } catch {}
+    } catch (error) {
+        console.error('Failed to show version from caches:', error);
+    }
 }
 
 registUpdateSW();
