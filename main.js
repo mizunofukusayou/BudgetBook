@@ -40,10 +40,13 @@ function showUpdateConfirm(worker) {
 }
 
 // 動作しているバージョンを表示
-async function showVersion () {
-    const div = document.getElementById('version');
-    const cacheNames = await caches.keys();
-    cacheNames.forEach(cacheName => {div.textContent='version: '+cacheName;})
+async function showVersion() {
+    if (!('caches' in window)) return;
+    try {
+        const div = document.getElementById('version');
+        const cacheNames = await caches.keys();
+        cacheNames.forEach(cacheName => {div.textContent='version: '+cacheName;})
+    } catch {}
 }
 
 registUpdateSW();
