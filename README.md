@@ -44,19 +44,11 @@
   iPhoneでの入力時にフォームが勝手にズームされないよう、フォントサイズを16pxに固定。現場での「使い心地」を最優先しています。
 
 ## スクリーンショット / デモ
-![メイン画面のイメージ](icons/icon-1024.png)
-![alt text](docs/image/home.png)
+![メイン画面のイメージ](docs/image/home.png)
 
 ## 開発環境のセットアップ
 1. 本リポジトリをクローンします
    ```bash
-   git clone https://github.com/あなたのユーザー名/budgetbook.git
+   git clone https://github.com/mizunofukusayou/BudgetBook.git
    ```
-2. ディレクトリへ移動します
-   ```bash
-   cd budgetbook
-   ```
-3. ローカルサーバーを起動して確認します
-
-## ライセンス
-MIT License
+2. ローカルサーバーを起動して確認します
